@@ -1,6 +1,7 @@
 import { user } from "./user";
 import { reportType } from "./reportType";
 import { ReportStatus } from "./reportStatus";
+import { reportEvents } from "./reportEvents";
 
 export interface reports {
     id:             number;
@@ -15,4 +16,5 @@ export interface reports {
     reportType:     reportType;
     reportStatus:   ReportStatus;
     user:           user;
+    events:         reportEvents[];
 }
