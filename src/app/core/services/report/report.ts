@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { reports } from '../../interfaces/reports';
 import { reportType } from '../../interfaces/reportType';
 import { responseMessage } from '../../interfaces/responseMessage';
-
+import { ReportStatus } from '../../interfaces/reportStatus';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,5 +29,12 @@ export class Report {
   }
   getAllReports(): Observable<reports[]> {
     return this.http.get<reports[]>(this.apiUrl + '/reports');
+  }
+  getStatus() : Observable<ReportStatus[]> {
+    return this.http.get<ReportStatus[]>(this.apiUrl + '/report-status');
+  }
+  postReportEvents(reportId: number, status: number, motivo: string) {
+    const body = {reportreportId: reportId, reportStatusId: status, description:motivo };
+     return this.http.post(`${this.apiUrl}/report-events`, body);
   }
 }
