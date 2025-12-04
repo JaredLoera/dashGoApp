@@ -72,7 +72,7 @@
 .report-list {
   margin-top: 20px;
     overflow: auto;
-    max-height: auto;
+    max-height: 800px;
 }
 
 .report-list h4 {
@@ -85,13 +85,24 @@
   padding: 15px;
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;       /* 🔥 Permite que los elementos bajen si no caben */
+  gap: 10px;             /* Separación más estética */
+  align-items: flex-start; /* 🔥 Evita el estiramiento extraño */
 }
 
+.card-left, .card-right {
+  flex: 1 1 100%; /* 🔥 Cada sección puede ocupar una línea completa */
+}
+.card-right {
+  word-wrap: break-word;       /* Para cortar palabras largas */
+  white-space: normal;         /* Permite múltiples líneas */
+}
 .card-left {
-  display: flex;
-  align-items: center;
+  flex: 1 1 auto;
+}
+
+.report-card > div:not(.card-left) {
+  flex: 1 1 100%;  /* Todo lo demás pasa a ocupar el ancho */
 }
 
 .avatar {

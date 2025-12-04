@@ -9,7 +9,7 @@ import { Report } from 'src/app/core/services/report/report';
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.css'],
   standalone: true,
-  imports: [RouterLink]
+
 })
 export class ReportsComponent  implements OnInit {
   

@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
   standalone: true,
-  imports: [MapaComponent, CommonModule, RouterLink]
+  imports: [MapaComponent, CommonModule]
 })
 export class MainComponent  implements OnInit {
  //get my saved profile 
@@ -22,7 +22,7 @@ export class MainComponent  implements OnInit {
 
   constructor(private reportService: Report) { }
   reports: reports[] = [];
-
+  selectedReport: reports | null = null;
 
   //25.54705117569143, -103.3320192844014
 
@@ -43,6 +43,9 @@ export class MainComponent  implements OnInit {
       {
         next: (data: reports[]) => {
           this.reports = data;
+          if (this.reports.length > 0) {
+            this.selectedReport = this.reports[0];
+          }
         },
         error: (error) => {
           console.error('Error fetching reports', error);
@@ -50,6 +53,10 @@ export class MainComponent  implements OnInit {
       }
     )
   }
+selectReportDetails(report: reports): void {
+    this.selectedReport = report;
+}
+
   reportsData = [
     {
       id: 1,

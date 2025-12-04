@@ -1,8 +1,9 @@
 
 
   <div>
+      <h4>Reportes activos</h4>
     <div class="report-list">
-        <h4>Reportes activos</h4>
+      
           @if (!reports) {
             <div class="report-card" style="text-align: center;">No hay reportes disponibles.</div>
           }
@@ -12,8 +13,11 @@
             <div class="avatar"></div>
             <span class="report-title">Reporte #{{ r.id }}</span>
           </div>
-          <div class="card-right">
+          <div>
             <strong>Tipo de reporte:</strong> {{ r.reportType.name }} <br />
+          </div>
+          <div class="card-right">
+            
             <strong>Descripción:</strong> {{ r.description }} <br />
           </div>
         </div>
