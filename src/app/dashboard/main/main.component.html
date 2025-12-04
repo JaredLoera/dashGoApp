@@ -30,7 +30,11 @@
         <strong>Imágenes:</strong>
       </div>
 
-      <button class="btn-status">Cambiar Status</button>
+     <button (click)="openStatusModal(selectedReport)">Cambiar Status</button>
+
+
+
+
     </aside>
 
     <!-- MAIN SECTION -->
@@ -49,6 +53,7 @@
           }
          @for (r of reports; track $index) {
         <div class="report-card"  (click)="selectReportDetails(r)"  [class.active]="selectedReport?.id === r.id">
+
           <div class="card-left">
             <div class="avatar"></div>
             <span class="report-title">Reporte #{{ r.id }}</span>
@@ -61,4 +66,64 @@
       }
       </section>
     </main>
+</div>
+
+<!-- MODAL PARA CAMBIAR STATUS -->
+<div class="modal-overlay" *ngIf="showStatusModal">
+  <div class="modal-container">
+
+    <div class="modal-header">
+      <h3>REPORTE</h3>
+      <button class="close-btn" (click)="closeStatusModal()">✕</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="row-flex">
+
+        <div class="col">
+          <label><strong>Tipo de reporte:</strong></label>
+          <div class="readonly-box">
+            {{ selectedReport?.reportType?.name }}
+          </div>
+        </div>
+      
+        <div class="col">
+          <label><strong>Descripción:</strong></label>
+          <div class="readonly-box">
+            {{ selectedReport?.description }}
+          </div>
+        </div>
+      
+      </div>
+
+      <label><strong>Dirección:</strong></label>
+      <div class="readonly-box">{{ selectedReport?.address }}</div>
+
+      <label>Imágenes:</label>
+      <div class="image-row">
+        @for (img of selectedReport?.images; track $index) {
+          <img [src]="img" class="image-preview" />
+        }
+      </div>
+
+      <label>Status:</label>
+      <select [(ngModel)]="status" style="width: 40%" class="form-input">
+        @for (s of statuss; track $index) {
+          <option [value]="s.id">{{ s.name }}</option>
+        }
+      </select><br>
+
+
+      <label>Motivo:</label>
+      <textarea class="form-textarea" [(ngModel)]="motivo"></textarea>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-save" (click)="saveStatus()">Guardar</button>
+      <button class="btn-cancel" (click)="closeStatusModal()">Cancelar</button>
+    </div>
+
+  </div>
 </div>
