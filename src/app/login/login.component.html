@@ -1,0 +1,15 @@
+<ion-content class="login-page">
+  <div class="login-container">
+      <img src="../../assets/Logo.jpeg" alt="Logo" class="logo" />
+
+    <h1 class="title">ECO-Reporte</h1>
+    <p class="subtitle">Inicia sesión en tu cuenta</p>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <label for="email">email: </label>
+      <ion-input id="email" type="email" formControlName="email" class="email-input" />
+      <label for="password">password: </label>
+      <ion-input id="password" type="password" formControlName="password" />
+      <ion-button type="submit" [disabled]="!loginForm.valid" class="login-button">Iniciar sesión</ion-button>
+    </form>
+  </div>
+</ion-content>

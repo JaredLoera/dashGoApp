@@ -1,0 +1,7 @@
+{
+  "name": "dashGoApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
