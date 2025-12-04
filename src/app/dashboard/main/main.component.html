@@ -1,19 +1,4 @@
-<div class="dashboard-container">
 
-  <!-- TOP NAV -->
-  <header class="top-nav">
-    <div class="nav-left">
-      <a class="active">Inicio</a>
-      <a>Reportes</a>
-    </div>
-
-    <div class="nav-right">
-      <span class="username">{{ userProfile?.fullName }}</span>
-      <div class="user-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
-      </div>
-    </div>
-  </header>
 
   <div class="content">
 
@@ -68,7 +53,6 @@
             <div class="avatar"></div>
             <span class="report-title">Reporte #{{ r.id }}</span>
           </div>
-
           <div class="card-right">
             <strong>Tipo de reporte:</strong> {{ r.reportType.name }} <br />
             <strong>Descripción:</strong> {{ r.description }} <br />
@@ -77,5 +61,4 @@
       }
       </section>
     </main>
-  </div>
 </div>

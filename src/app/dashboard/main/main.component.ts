@@ -4,13 +4,15 @@ import { MapaComponent } from '../mapa/mapa.component';
 import { Report } from 'src/app/core/services/report/report';
 import { reports } from 'src/app/core/interfaces/reports';
 import { user } from 'src/app/core/interfaces/user';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
-  imports: [MapaComponent, CommonModule]
+  standalone: true,
+  imports: [MapaComponent, CommonModule, RouterLink]
 })
 export class MainComponent  implements OnInit {
  //get my saved profile 

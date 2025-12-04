@@ -1,0 +1,19 @@
+<div class="dashboard-container">
+
+  <!-- TOP NAV -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <a routerLink="/dashboard">Inicio</a>
+      <a routerLink="/reports">Reportes</a>
+    </div>
+
+    <div class="nav-right">
+      <span class="username">{{ userProfile?.fullName }}</span>
+      <div class="user-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
+      </div>
+    </div>
+  </header>
+
+  <router-outlet></router-outlet>
+</div>

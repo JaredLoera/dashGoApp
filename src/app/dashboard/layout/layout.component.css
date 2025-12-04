@@ -1,0 +1,35 @@
+.dashboard-container {
+    font-family: "Segoe UI", sans-serif;
+}
+
+.top-nav {
+    height: 55px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-left a {
+    margin-right: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav-left .active {
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.user-icon img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-left: 8px;
+}

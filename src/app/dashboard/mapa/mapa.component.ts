@@ -25,6 +25,7 @@ L.Marker.prototype.options.icon = iconDefault;
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.css'],
+  standalone: true
 })
 export class MapaComponent implements AfterViewInit {
 
