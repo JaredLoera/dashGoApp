@@ -7,23 +7,23 @@
       <h3>Detalles del Reporte</h3>
 
       <div class="detalle-item">
-        <strong>Tipo de Reporte:</strong>
-        <span>{{ reportsData[0].type }}</span>
+        <strong>Tipo de Reporte: </strong>
+        <span>{{ selectedReport?.reportType?.name || "Seleccione un reporte" }}</span>
       </div>
 
       <div class="detalle-item">
-        <strong>Descripción:</strong>
-        <span>{{ reportsData[0].description }}</span>
+        <strong>Descripción: </strong>
+        <span>{{ selectedReport?.description || "Seleccione un reporte" }}</span>
       </div>
 
       <div class="detalle-item">
-        <strong>Status:</strong>
-        <span>{{ reportsData[0].status }}</span>
+        <strong>Status: </strong>
+        <span>{{ selectedReport?.reportStatus?.name || "Seleccione un reporte" }}</span>
       </div>
 
       <div class="detalle-item">
-        <strong>Dirección:</strong>
-        <span>{{ reportsData[0].address }}</span>
+        <strong>Dirección: </strong>
+        <span>ahorita vemos aqui que pedo</span>
       </div>
 
       <div class="detalle-item">
@@ -48,7 +48,7 @@
             <div class="report-card" style="text-align: center;">No hay reportes disponibles.</div>
           }
          @for (r of reports; track $index) {
-        <div class="report-card" >
+        <div class="report-card"  (click)="selectReportDetails(r)"  [class.active]="selectedReport?.id === r.id">
           <div class="card-left">
             <div class="avatar"></div>
             <span class="report-title">Reporte #{{ r.id }}</span>
