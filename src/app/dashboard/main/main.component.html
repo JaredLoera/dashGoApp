@@ -26,9 +26,20 @@
         <span>ahorita vemos aqui que pedo</span>
       </div>
 
-      <div class="detalle-item">
-        <strong>Imágenes:</strong>
+   <div class="detalle-item">
+      <strong>Imágenes:</strong>
+      <div class="image-gallery">
+        @if (selectedReport?.photos!.length > 0) {
+          @for (item of selectedReport?.photos; track $index) {
+            <div class="image-item">
+              <img [src]="baseUrl +item.url" alt="Reporte Image {{ $index + 1 }}" />
+            </div>
+          }
+        }@else {
+          <span>No hay imágenes disponibles.</span>
+        }
       </div>
+    </div>
 
      <button (click)="openStatusModal(selectedReport)">Cambiar Status</button>
 

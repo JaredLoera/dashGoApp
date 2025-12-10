@@ -1,0 +1,24 @@
+<div class="verify-container">
+  <div class="card">
+    <h2>Verificar Código</h2>
+    <p class="subtitle">
+      Ingresa el código de verificación que enviamos a tu correo.
+    </p>
+
+    <div class="code-inputs">
+      <input id="code-0" maxlength="1" (input)="onInputChange($event, 0)">
+      <input id="code-1" maxlength="1" (input)="onInputChange($event, 1)">
+      <input id="code-2" maxlength="1" (input)="onInputChange($event, 2)">
+      <input id="code-3" maxlength="1" (input)="onInputChange($event, 3)">
+      <input id="code-4" maxlength="1" (input)="onInputChange($event, 4)">
+      <input id="code-5" maxlength="1" (input)="onInputChange($event, 5)">
+    </div>
+
+    <button class="btn" (click)="login()">Verificar</button>
+
+    <p class="resend">
+      ¿No recibiste el código?
+      <a href="#" class="link">Reenviar código</a>
+    </p>
+  </div>
+</div>
