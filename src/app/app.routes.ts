@@ -3,6 +3,7 @@ import { MainComponent } from './dashboard/main/main.component';
 import { LoginComponent } from './login/login.component';
 import { ReportsComponent } from './dashboard/reports/reports.component';
 import { LayoutComponent } from './dashboard/layout/layout.component';
+import { UsersComponent } from './dashboard/users/users.component';
 
 export const routes: Routes = [
   {
@@ -14,7 +15,8 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'dashboard', component: MainComponent },
-      { path: 'reports', component: ReportsComponent }
+      { path: 'reports', component: ReportsComponent },
+      { path: 'users', component: UsersComponent }
     ]
   }
 

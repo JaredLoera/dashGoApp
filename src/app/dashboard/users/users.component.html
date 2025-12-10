@@ -1,0 +1,68 @@
+<div class="users-container">
+
+  <h3>Usuarios Admin</h3>
+
+  <!-- Botón para agregar nuevo usuario -->
+  <button class="btn-add-user" (click)="openUserModal()">Agregar Usuario</button>
+
+  <!-- Lista de usuarios -->
+  <div *ngIf="users?.length === 0" class="no-users">No hay usuarios</div>
+
+  <div *ngFor="let u of users" class="user-card">
+    <div class="user-info">
+      <div class="avatar">{{ u.fullName.charAt(0) }}</div>
+      <div class="user-details">
+        <div class="user-name">{{ u.fullName }}</div>
+        <div class="user-email">{{ u.email }}</div>
+        <div class="user-extra">
+          <span><strong>CURP:</strong> {{ u.curp }}</span>
+          <span><strong>Rol:</strong> {{ u.roleId === 1 ? 'Administrador' : 'Usuario' }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="user-actions">
+      <button class="btn-edit" (click)="openUserModal(u)">Editar</button>
+      <button class="btn-delete" (click)="deleteUser(u)">Eliminar</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- MODAL PARA CREAR/EDITAR USUARIO -->
+<div class="modal-overlay" *ngIf="showUserModal">
+  <div class="modal-container">
+
+    <div class="modal-header">
+      <h3>{{ selectedUser ? 'Editar Usuario' : 'Crear Usuario' }}</h3>
+      <button class="close-btn" (click)="closeUserModal()">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <label>Nombre completo:</label>
+      <input type="text" [(ngModel)]="userForm.fullName" class="form-input" />
+
+      <label>Email:</label>
+      <input type="email" [(ngModel)]="userForm.email" class="form-input" />
+
+      <label>Edad:</label>
+      <input type="number" [(ngModel)]="userForm.age" class="form-input" />
+
+      <label>CURP:</label>
+      <input type="text" [(ngModel)]="userForm.curp" class="form-input" />
+
+      <label>Rol:</label>
+      <select [(ngModel)]="userForm.roleId" class="form-input">
+        <option [value]="1">Administrador</option>
+        <option [value]="2">Usuario</option>
+      </select>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-save" (click)="saveUser()">Guardar</button>
+      <button class="btn-cancel" (click)="closeUserModal()">Cancelar</button>
+    </div>
+
+  </div>
+</div>
