@@ -10,7 +10,7 @@
 
     <div class="nav-right">
       <span class="username">{{ userProfile?.fullName }}</span>
-      <div class="user-icon">
+      <div class="user-icon" (click)="logout()">
         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
       </div>
     </div>
