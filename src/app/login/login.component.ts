@@ -7,7 +7,7 @@ import { User } from '../core/services/user/user';
 import { user } from '../core/interfaces/user';
 import { Router } from '@angular/router';
 import { IonContent, IonInput, IonButton } from "@ionic/angular/standalone";
-import { environment } from 'src/environments/environment';
+import { responseMessage } from '../core/interfaces/responseMessage';
 
 @Component({
   selector: 'app-login',
@@ -36,32 +36,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.authService.login(this.loginForm.value.email!, this.loginForm.value.password!).subscribe({
-      next: (token: token) => {
-        this.authService.setToken(token.token);
-        console.log('Login exitoso, token almacenado');
-        this.userService.getUserProfile().subscribe(
-          {
-            next: (user) => {
-              this.userProfile = user;
-              localStorage.setItem(environment.storageNames.user, JSON.stringify(user));
-              localStorage.setItem(environment.typeProfile, this.userProfile.roleId.toString());
-              if (this.userProfile.roleId==1) {
-                this.router.navigate(['/dashboard']);
-              } else {
-                this.router.navigate(['/not-allowed-device']);
-              }
-            },
-            error: (error) => {
-              console.error('Error fetching user profile', error);
-            }
-          }
-        );
-        (document.activeElement as HTMLElement)?.blur();
-
+  this.authService.login(this.loginForm.value.email!, this.loginForm.value.password!).subscribe({
+      next: (response: responseMessage) => {
+        //envair a url de verificacion
+        this.router.navigate([`/verify-code/${this.loginForm.value.email}`]);
       },
       error: (error) => {
-        console.error('Error en el login', error);
+        console.error('Error during login:', error);
       }
     });
   }

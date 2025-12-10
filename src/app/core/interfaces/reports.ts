@@ -2,6 +2,7 @@ import { user } from "./user";
 import { reportType } from "./reportType";
 import { ReportStatus } from "./reportStatus";
 import { reportEvents } from "./reportEvents";
+import { Photo } from "./photo";
 
 export interface reports {
     id:             number;
@@ -17,4 +18,5 @@ export interface reports {
     reportStatus:   ReportStatus;
     user:           user;
     events:         reportEvents[];
+    photos:         Photo[];
 }
