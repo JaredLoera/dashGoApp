@@ -1,6 +1,6 @@
 export const environment = {
           production: false,
-  apiUrl: 'http://localhost:3333/api',
+  apiUrl: 'https://api.buenasnochis.online/api',
   storageNames: {
     token: "token",
     user: "user",
