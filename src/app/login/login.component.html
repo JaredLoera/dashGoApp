@@ -10,6 +10,9 @@
       <label for="password">password: </label>
       <ion-input id="password" type="password" formControlName="password" />
       <ion-button type="submit" [disabled]="!loginForm.valid" class="login-button">Iniciar sesión</ion-button>
+      <p *ngIf="errorMessage" class="error-text">
+  {{ errorMessage }}
+</p>
     </form>
   </div>
 </ion-content>

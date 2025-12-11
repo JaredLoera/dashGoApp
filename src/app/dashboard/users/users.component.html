@@ -2,35 +2,37 @@
 
   <h3>Usuarios Admin</h3>
 
-  <!-- Botón para agregar nuevo usuario -->
   <button class="btn-add-user" (click)="openUserModal()">Agregar Usuario</button>
 
-  <!-- Lista de usuarios -->
   <div *ngIf="users?.length === 0" class="no-users">No hay usuarios</div>
 
   <div *ngFor="let u of users" class="user-card">
+
     <div class="user-info">
-      <div class="avatar">{{ u.fullName.charAt(0) }}</div>
+      <div class="avatar">{{ u.fullName?.charAt(0) }}</div>
+
       <div class="user-details">
         <div class="user-name">{{ u.fullName }}</div>
         <div class="user-email">{{ u.email }}</div>
+
         <div class="user-extra">
+          <span><strong>Edad:</strong> {{ u.age }}</span>
           <span><strong>CURP:</strong> {{ u.curp }}</span>
           <span><strong>Rol:</strong> {{ u.roleId === 1 ? 'Administrador' : 'Usuario' }}</span>
         </div>
       </div>
     </div>
+
     <div class="user-actions">
       <button class="btn-edit" (click)="openUserModal(u)">Editar</button>
       <button class="btn-delete" (click)="deleteUser(u)">Eliminar</button>
     </div>
+
   </div>
 
 </div>
 
-
-
-<!-- MODAL PARA CREAR/EDITAR USUARIO -->
+<!-- MODAL -->
 <div class="modal-overlay" *ngIf="showUserModal">
   <div class="modal-container">
 
@@ -40,23 +42,37 @@
     </div>
 
     <div class="modal-body">
+
       <label>Nombre completo:</label>
-      <input type="text" [(ngModel)]="userForm.fullName" class="form-input" />
+      <input type="text" [(ngModel)]="userForm.full_name" class="form-input" />
+      <div class="error" *ngIf="apiErrors['full_name']">
+        {{ apiErrors['full_name'] }}
+      </div>
 
       <label>Email:</label>
       <input type="email" [(ngModel)]="userForm.email" class="form-input" />
+      <div class="error" *ngIf="apiErrors['email']">
+        {{ apiErrors['email'] }}
+      </div>
+
+      <label>Password:</label>
+      <input type="password" [(ngModel)]="userForm.password" class="form-input" />
+      <div class="error" *ngIf="apiErrors['password']">
+        {{ apiErrors['password'] }}
+      </div>
 
       <label>Edad:</label>
-      <input type="number" [(ngModel)]="userForm.age" class="form-input" />
+      <input type="text" [(ngModel)]="userForm.age" class="form-input" />
+      <div class="error" *ngIf="apiErrors['age']">
+        {{ apiErrors['age'] }}
+      </div>
 
       <label>CURP:</label>
       <input type="text" [(ngModel)]="userForm.curp" class="form-input" />
+      <div class="error" *ngIf="apiErrors['curp']">
+        {{ apiErrors['curp'] }}
+      </div>
 
-      <label>Rol:</label>
-      <select [(ngModel)]="userForm.roleId" class="form-input">
-        <option [value]="1">Administrador</option>
-        <option [value]="2">Usuario</option>
-      </select>
     </div>
 
     <div class="modal-footer">
@@ -65,4 +81,8 @@
     </div>
 
   </div>
+</div>
+
+<div *ngIf="toast.show" class="toast" [ngClass]="toast.type">
+  {{ toast.message }}
 </div>

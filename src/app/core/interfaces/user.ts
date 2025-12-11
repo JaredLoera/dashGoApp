@@ -1,10 +1,10 @@
 export interface user {
-    id:        number;
-    fullName:  string;
-    email:     string;
-    roleId:    number;
-    age:       number;
-    curp:      string;
-    createdAt: Date;
-    updatedAt: Date;
+  id: number;
+  fullName: string | null;
+  email: string;
+  age: string | null;
+  curp: string | null;
+  roleId: number;
+  createdAt?: string;
+  updatedAt?: string;
 }

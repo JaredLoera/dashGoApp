@@ -16,24 +16,24 @@ export class User {
   }
  
 
-  // Obtener todos los admins
+   // Obtener todos los administradores
   getAdmins(): Observable<user[]> {
-    return this.http.get<user[]>(`${this.apiUrl}/admin`);
+    return this.http.get<user[]>(`${this.apiUrl}/admin/users`);
   }
 
-  // Crear admin
+  // Crear administrador
   createAdmin(userData: Partial<user>): Observable<responseMessage> {
-    return this.http.post<responseMessage>(`${this.apiUrl}/admin`, userData);
+    return this.http.post<responseMessage>(`${this.apiUrl}/admin/users`, userData);
   }
 
   // Actualizar usuario
   updateUser(id: number, userData: Partial<user>): Observable<responseMessage> {
-    return this.http.put<responseMessage>(`${this.apiUrl}/${id}`, userData);
+    return this.http.put<responseMessage>(`${this.apiUrl}/users/${id}`, userData);
   }
 
   // Eliminar usuario
   deleteUser(id: number): Observable<responseMessage> {
-    return this.http.delete<responseMessage>(`${this.apiUrl}/${id}`);
+    return this.http.delete<responseMessage>(`${this.apiUrl}/users/${id}`);
   }
 
 }
