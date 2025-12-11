@@ -24,24 +24,28 @@ import { responseMessage } from '../core/interfaces/responseMessage';
 export class LoginComponent implements OnInit {
 
   constructor(private authService: Auth, private router: Router, private userService: User) { }
+  errorMessage: string = '';
 
   ngOnInit() { }
   userProfile: user | null = null;
   loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
+    
   });
 
   async login() {
     if (this.loginForm.invalid) {
       return;
     }
+  this.errorMessage = '';
   this.authService.login(this.loginForm.value.email!, this.loginForm.value.password!).subscribe({
       next: (response: responseMessage) => {
         //envair a url de verificacion
         this.router.navigate([`/verify-code/${this.loginForm.value.email}`]);
       },
       error: (error) => {
+        this.errorMessage = error.error?.message || 'Ocurrió un error';
         console.error('Error during login:', error);
       }
     });

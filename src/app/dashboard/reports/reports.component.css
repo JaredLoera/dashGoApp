@@ -112,3 +112,50 @@
   border-radius: 50%;
   margin-right: 10px;
 }
+.report-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f8f8;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  flex-wrap: nowrap; /* Mantener todo en una línea */
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-right {
+  flex: 1;
+  margin-left: 20px;
+  word-wrap: break-word;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-edit {
+  background-color: #e6f0ff;
+  color: #1f4d99;
+}
+
+.btn-delete {
+  background-color: #ffd8d8;
+  color: #990000;
+}
